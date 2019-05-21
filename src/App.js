@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Navigation from './assets/js/Partials/Navigation'
-import Home from './assets/js/Pages/Home'
-import Login from './assets/js/Pages/Auth/Login'
-import ClimbIndex from './assets/js/Climbs/ClimbIndex'
+import Navigation from './partials/navigation'
+import Home from './pages/home'
+import ClimbIndex from './climbs/climbIndex'
+import Login from './auth/login'
+import { UserProvider } from './auth/userContext'
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <UserProvider>
         <Router>
             <div>
               <Navigation></Navigation>
@@ -17,7 +18,7 @@ class App extends Component {
               <Route path="/login" component={Login}/>
             </div>
         </Router>
-      </div>
+      </UserProvider>
     );
   }
 }

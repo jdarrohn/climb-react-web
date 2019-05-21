@@ -7,10 +7,10 @@ class Home extends Component {
         return (
             <Jumbotron className="rounded-0 bg-primary">
                 <Container className="text-center">
-                    <h1 className="display-4 text-white text-center mb-5">
+                    <h1 className="display-4 text-white text-center">
                         Ready, Set, Climb! <br/>
-                        <small>The QR Code App for Climbing Gyms</small>
                     </h1>
+                    <p className="lead text-white mb-5">The QR Code App for Climbing Gyms</p>
                     <Link to={'/climbs'}>
                         <Button color="outline-light" size="lg">View Some Recent Climbs</Button>
                     </Link>
