@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect} from 'react';
 import {
   Collapse,
   Container,
@@ -17,7 +17,7 @@ export default function Navigation() {
   // think of this like componentDidMount
   useEffect(() => {
     console.log(currentUser);
-  }, []);
+  }, [currentUser]);
 
   return (
     <div>
