@@ -1,4 +1,4 @@
-import React, { useContext, useEffect} from 'react';
+import React, { useContext } from 'react';
 import {
   Collapse,
   Container,
@@ -7,17 +7,14 @@ import {
   Nav,
   NavItem } from 'reactstrap';
 
-import { UserContext } from '../auth/userContext'
+import { AuthenticatedContext } from '../auth/authenticatedContext'
 
 import { Link } from 'react-router-dom'
 
-export default function Navigation() {
-  const { currentUser } = useContext(UserContext);
+export default () => {
 
-  // think of this like componentDidMount
-  useEffect(() => {
-    console.log(currentUser);
-  }, [currentUser]);
+  const authenticatedUser = useContext(AuthenticatedContext);
+  const currentUser = authenticatedUser.currentUser;
 
   return (
     <div>
@@ -34,12 +31,26 @@ export default function Navigation() {
                     Climbs
                   </Link>
               </NavItem>
-              { !currentUser &&
-                <NavItem>
-                    <Link className="nav-link text-white" to={'/login'}>
-                      Login
-                    </Link>
-                </NavItem>
+              { currentUser && Object.keys(currentUser).length ? (
+                  <>
+                    <NavItem>
+                      <Link className="nav-link text-white" to={'/stats'}>
+                        Stats
+                      </Link>
+                    </NavItem>
+                    <NavItem>
+                        <Link className="nav-link text-white" to={'/logout'}>
+                          Logout
+                        </Link>
+                    </NavItem>
+                  </>
+                ) : (
+                  <NavItem>
+                      <Link className="nav-link text-white" to={'/login'}>
+                        Login
+                      </Link>
+                  </NavItem>
+                )
               }
             </Nav>
           </Collapse>
