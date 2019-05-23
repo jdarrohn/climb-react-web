@@ -1,7 +1,13 @@
 $primary: indigo;
+$success: mediumseagreen;
+$warning: darkorange;
+$danger: darkred;
 
 $headings-font-family: 'Heebo', sans-serif;
+$font-family-sans-serif: 'Heebo', sans-serif;
 
 $theme-colors: (
-    primary: $primary
+    primary: $primary,
+    success: $success,
+    danger: $danger
 );

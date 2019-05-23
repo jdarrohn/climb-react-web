@@ -28,7 +28,7 @@ export const AuthenticatedProvider = ({children, props}) => {
         }
     }, []);
 
-    const authenticateUser = async (newCurrentUser) => {
+    const authenticateUser = async (newCurrentUser, history) => {
 
         await fetch('https://climb.dtbstaging.online/oauth/token', {
             method: 'POST',
@@ -60,6 +60,7 @@ export const AuthenticatedProvider = ({children, props}) => {
         .then((user) => {
             setCurrentUser(user)
             localStorage.setItem('user', JSON.stringify(user));
+            history.push('/stats');
         })
         .catch((error) => {
             console.error(error);

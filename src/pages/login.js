@@ -43,7 +43,7 @@ export const Login = (props) => {
                                     color="primary"
                                     size="lg"
                                     className="mt-4" 
-                                    onClick={ () => { authenticateUser( { email: email, password: password } ) } }>Submit</Button>
+                                    onClick={ () => { authenticateUser( { email: email, password: password }, props.history ) } }>Submit</Button>
                             )}
                         </AuthenticatedConsumer>
                     </Form>

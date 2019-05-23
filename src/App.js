@@ -6,7 +6,7 @@ import Stats from './pages/stats'
 import Login from './pages/login'
 
 import Navigation from './partials/navigation'
-import ClimbIndex from './pages/climbsIndex'
+import Climbs from './pages/climbs'
 import { AuthenticatedProvider } from './auth/authenticatedContext'
 
 export const App = () => {
@@ -16,7 +16,7 @@ export const App = () => {
           <div>
             <Navigation></Navigation>
             <Route exact path="/" component={Home} />
-            <Route path="/climbs" component={ClimbIndex}/>
+            <Route path="/climbs" component={Climbs}/>
             <Route path="/login" component={Login}/>
             <Route path="/stats" component={Stats}/>
           </div>
