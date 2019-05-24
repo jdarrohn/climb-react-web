@@ -6,7 +6,7 @@ export const SuccessPercentageBar = (props) => {
 
     useEffect(() => {
         determineBarColor();
-    });
+    },[]);
 
     const determineBarColor = () => {
         const successPercentage = props.successPercentage;

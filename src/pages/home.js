@@ -6,8 +6,8 @@ class Home extends Component {
     render() {
         return (
             <Jumbotron className="rounded-0 bg-primary">
-                <Container className="text-center">
-                    <h1 className="display-4 text-white text-center">
+                <Container>
+                    <h1 className="display-2 text-white">
                         Ready, Set, Climb! <br/>
                     </h1>
                     <p className="lead text-white mb-5">The QR Code App for Climbing Gyms</p>

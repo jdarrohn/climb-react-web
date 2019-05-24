@@ -20,7 +20,7 @@ export default () => {
     <div>
       <Navbar color="primary" dark expand="md">
         <Container>
-          <Link className="nav-link text-white" to={'/'}>
+          <Link className="nav-link text-white brand" to={'/'}>
             Ready, Set, Climb!
           </Link>
           <NavbarToggler />

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {AuthenticatedContext} from '../auth/authenticatedContext'
-import { AttemptsList } from '../attempts/attemptsList'
+import { AttemptsUser } from '../attempts/attemptsUser'
+import { Spinner } from '../global/spinner'
 import { SuccessPercentageBar } from '../global/successPercentageBar'
 import {
     Container,
@@ -46,10 +47,10 @@ export const PageStats = () => {
                             <>
                                 <h2>Your Attempts</h2>
                                 <SuccessPercentageBar successPercentage={getSuccessPercentage()}/>
-                                <AttemptsList attempts={currentUser.attempts} />
+                                <AttemptsUser attempts={currentUser.attempts} />
                             </>
                         ) : (
-                            <p>No Attempts</p>
+                            <Spinner />
                         )
                     }
                 </Col>

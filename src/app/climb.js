@@ -1,5 +1,3 @@
-import _ from 'underscore';
-
 export default class Climb {
     static convertGrade(grade) {
         const conversions = {

@@ -6,20 +6,25 @@ import Stats from './pages/stats'
 import Login from './pages/login'
 
 import Navigation from './partials/navigation'
+import Footer from './partials/footer'
+
 import Climbs from './pages/climbs'
+import ClimbShow from './climbs/climbShow'
 import { AuthenticatedProvider } from './auth/authenticatedContext'
 
 export const App = () => {
   return (
     <AuthenticatedProvider>
       <Router>
-          <div>
+          <>
             <Navigation></Navigation>
             <Route exact path="/" component={Home} />
-            <Route path="/climbs" component={Climbs}/>
+            <Route exact path="/climbs" component={Climbs}/>
+            <Route path="/climbs/:id" component={ClimbShow}/>
             <Route path="/login" component={Login}/>
             <Route path="/stats" component={Stats}/>
-          </div>
+            <Footer></Footer>
+          </>
       </Router>
     </AuthenticatedProvider>
   );

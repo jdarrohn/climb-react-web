@@ -22,9 +22,24 @@ export const AuthenticatedProvider = ({children, props}) => {
     const [currentUser, setCurrentUser] = useState(null)
     
     useEffect(() => {
-        const storedUser = getStoredUser();
-        if( storedUser ) {
-            setCurrentUser(storedUser);
+        let storageUserToken = localStorage.getItem('userToken');
+        if( storageUserToken && storageUserToken.length ) {
+            fetch('https://climb.dtbstaging.online/api/user', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + storageUserToken
+                },
+            })
+            .then((response) => {
+                return response.json();
+            })
+            .then((user) => {
+                setCurrentUser(user)
+                localStorage.setItem('user', JSON.stringify(user));
+            })
+            .catch((error) => {
+                console.error(error);
+            });
         }
     }, []);
 
