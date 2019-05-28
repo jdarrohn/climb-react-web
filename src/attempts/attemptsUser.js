@@ -8,7 +8,7 @@ import moment from 'moment'
 export const AttemptsUser =  (props) => {
 
     useEffect(() => {
-        console.log(props.attempts);
+
     },[])
 
     const formatDate = (date) => {

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { MessagesConsumer } from '../global/messages/messagesContext'
+import Config from '../app/config'
 
 export const AuthenticatedContext = React.createContext({
     currentUser: null
@@ -6,25 +8,12 @@ export const AuthenticatedContext = React.createContext({
 
 export const AuthenticatedProvider = ({children, props}) => {
 
-    function getStoredUser() {
-        let storageUser = localStorage.getItem('user');
-        storageUser = JSON.parse(storageUser);
-
-        // Return early with the stored user if one exists
-        if(storageUser && Object.keys(storageUser).length) {
-            return storageUser;
-        }
-
-        // Return false
-        return {};
-    }
-
     const [currentUser, setCurrentUser] = useState(null)
     
     useEffect(() => {
         let storageUserToken = localStorage.getItem('userToken');
         if( storageUserToken && storageUserToken.length ) {
-            fetch('https://climb.dtbstaging.online/api/user', {
+            fetch( Config.api.url + '/api/user', {
                 method: 'GET',
                 headers: {
                     'Authorization': 'Bearer ' + storageUserToken
@@ -45,7 +34,7 @@ export const AuthenticatedProvider = ({children, props}) => {
 
     const authenticateUser = async (newCurrentUser, history) => {
 
-        await fetch('https://climb.dtbstaging.online/oauth/token', {
+        await fetch(Config.api.url + '/oauth/token', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -54,7 +43,7 @@ export const AuthenticatedProvider = ({children, props}) => {
             body: JSON.stringify({
                 grant_type: 'password',
                 client_id: 2,
-                client_secret: 'h4iVQ8jndJxxtyHwk3jBZqcv6JiBr9N9mlbzqdrR',
+                client_secret: Config.api.clientSecret,
                 username: newCurrentUser.email,
                 password: newCurrentUser.password
             }),
@@ -62,7 +51,7 @@ export const AuthenticatedProvider = ({children, props}) => {
         .then((response) => response.json())
         .then((userToken) => {
             localStorage.setItem('userToken', userToken.access_token);
-            return fetch('https://climb.dtbstaging.online/api/user', {
+            return fetch(Config.api.url + '/api/user', {
                 method: 'GET',
                 headers: {
                     'Authorization': 'Bearer ' + userToken.access_token
@@ -82,8 +71,22 @@ export const AuthenticatedProvider = ({children, props}) => {
         });
     };
 
+    const removeAuthenticatedUser = (history) => {
+        setCurrentUser(null);
+        localStorage.removeItem('user');
+        localStorage.removeItem('userToken');
+
+        return (
+            <MessagesConsumer>
+                {({updateMessage}) => (
+                    updateMessage('You have been logged out.', 'success')
+                )}
+            </MessagesConsumer>
+        );
+    }
+
   return (
-      <AuthenticatedContext.Provider value={ {currentUser, authenticateUser} }>
+      <AuthenticatedContext.Provider value={ {currentUser, authenticateUser, removeAuthenticatedUser} }>
           { children }
       </AuthenticatedContext.Provider>
   );

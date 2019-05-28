@@ -3,6 +3,8 @@ import { AuthenticatedContext } from '../auth/authenticatedContext'
 import Climb from '../app/climb'
 import { AttemptsClimb } from '../attempts/attemptsClimb'
 import { SuccessPercentageBar } from '../global/successPercentageBar'
+import { Spinner } from '../global/spinner'
+import Config from '../app/config'
 import {
     Container,
     Row,
@@ -18,7 +20,7 @@ export const ClimbShow = (props) => {
 
     const getClimb = () => {
         if( userToken ) {
-            let climbUrl = 'https://climb.dtbstaging.online/api/climbs/' + climbID;
+            let climbUrl = Config.api.url + '/api/climbs/' + climbID;
             fetch(climbUrl, {
                 method: 'GET',
                 headers: {
@@ -58,8 +60,8 @@ export const ClimbShow = (props) => {
         <Container>
             <Row>
                 <Col lg="8" className="mx-lg-auto py-3 py-lg-5">
+                    <p className="display-2 font-weight-bold">{ Climb.convertGrade(climb.grade) }</p>
                     <h1>{ climb.name }</h1>
-                    <p className="h1">{ Climb.convertGrade(climb.grade) }</p>
                     <p className="lead">{ climb.description }</p>
                 </Col>
             </Row>
@@ -72,7 +74,7 @@ export const ClimbShow = (props) => {
                             <AttemptsClimb attempts={climb.attempts} />
                         </>
                     ) : (
-                        <p>No attempts</p>
+                        <Spinner />
                     )
                 }
                 </Col>

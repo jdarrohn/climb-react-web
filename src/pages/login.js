@@ -18,7 +18,7 @@ export const Login = (props) => {
     return (
         <Container>
             <Row>
-                <Col lg="6" className="mx-lg-auto py-3 py-lg-5">
+                <Col lg="8" className="mx-lg-auto py-3 py-lg-5">
                     <Form>
                         <h1>Login</h1>
                         <p className="lead">Sign in to your account to get started.</p>

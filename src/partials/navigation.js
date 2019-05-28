@@ -43,6 +43,11 @@ export default () => {
                           Logout
                         </Link>
                     </NavItem>
+                    <NavItem>
+                        <Link className="nav-link text-white" to={'/users/' + currentUser.id}>
+                          { currentUser.name }
+                        </Link>
+                    </NavItem>
                   </>
                 ) : (
                   <NavItem>

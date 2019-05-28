@@ -11,6 +11,10 @@ class Home extends Component {
                         Ready, Set, Climb! <br/>
                     </h1>
                     <p className="lead text-white mb-5">The QR Code App for Climbing Gyms</p>
+                    <div className="mb-5">
+                        <img src="/download-play-store.svg" height="60" className="mr-2" />
+                        <img src="/download-app-store.svg" height="60" />
+                    </div>
                     <Link to={'/climbs'}>
                         <Button color="outline-light" size="lg">View Some Recent Climbs</Button>
                     </Link>
