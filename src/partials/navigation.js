@@ -34,6 +34,11 @@ export default () => {
               { currentUser && Object.keys(currentUser).length ? (
                   <>
                     <NavItem>
+                      <Link className="nav-link text-white" to={'/settings'}>
+                        Settings
+                      </Link>
+                    </NavItem>
+                    <NavItem>
                       <Link className="nav-link text-white" to={'/stats'}>
                         Stats
                       </Link>
@@ -50,11 +55,18 @@ export default () => {
                     </NavItem>
                   </>
                 ) : (
-                  <NavItem>
-                      <Link className="nav-link text-white" to={'/login'}>
-                        Login
-                      </Link>
-                  </NavItem>
+                  <>
+                    <NavItem>
+                        <Link className="nav-link text-white" to={'/login'}>
+                          Login
+                        </Link>
+                    </NavItem>
+                    <NavItem>
+                        <Link className="nav-link text-white" to={'/register'}>
+                          Register
+                        </Link>
+                    </NavItem>
+                  </>
                 )
               }
             </Nav>

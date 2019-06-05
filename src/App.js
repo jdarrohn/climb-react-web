@@ -10,6 +10,8 @@ import Stats from './pages/stats'
 import Login from './pages/login'
 import Logout from './pages/logout'
 import Climbs from './pages/climbs'
+import Register from './pages/register'
+import Settings from './settings/settings'
 
 import ClimbShow from './climbs/climbShow'
 import ClimbCreate from './climbs/climbCreate'
@@ -31,7 +33,9 @@ export const App = () => {
               <Route path="/climbs/set" component={ClimbCreate}/>
               <Route path="/login" component={Login}/>
               <Route path="/logout" component={Logout}/>
+              <Route path="/register" component={Register}/>
               <Route path="/stats" component={Stats}/>
+              <Route path="/settings" component={Settings}/>
               <Footer></Footer>
             </>
         </Router>

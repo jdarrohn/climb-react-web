@@ -1,6 +1,6 @@
 export default {
     api: {
         url: 'http://readysetclimb.test',
-        clientSecret: 'p8Jb9GTgolLoH6Smq3OQVQkuJIQECR3yOwdNzF52'
+        clientSecret: 't7WPW4PjJSyEubg7lZAexAfVJc1ogZe3NFytyE5y'
     }
 }
